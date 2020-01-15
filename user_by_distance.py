@@ -50,6 +50,17 @@ def get_users_in_city_or_within_distance_of(city, distance, location):
     return users2
 
 if __name__ == "__main__":
-    london = (51.5074, 0.1278) # (lat, lon)
-    for user in get_users_in_city_or_within_distance_of('London',50, london):
+    import sys
+    if (len(sys.argv) != 5):
+      print("""
+      An API that returns people who are listed as either living in a city, or whose current coordinates are within a certain distance in miles of a city (supplied as latitude and longitude)
+     
+      Usage:  python user_by_distance.py <city> <distance> <latitude> <Longitude>
+
+      Example: user_by_distance.py London 50 51.5074 0.1278
+      """)
+      sys.exit(1)
+
+    city = (float(sys.argv[3]), float(sys.argv[4])) # (lat, lon)
+    for user in get_users_in_city_or_within_distance_of(sys.argv[1],float(sys.argv[2]), city):
         print(user)
