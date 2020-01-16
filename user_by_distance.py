@@ -1,8 +1,9 @@
 import json
 import requests
+import os
 from haversine import haversine,Unit
 
-api_url_base = 'https://bpdts-test-app.herokuapp.com/'
+api_url_base = os.getenv('API_URL_BASE', 'https://bpdts-test-app.herokuapp.com/')
 headers = {'Content-Type': 'application/json'}
 london = (51.5074, 0.1278) # (lat, lon)
 
